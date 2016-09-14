@@ -15,13 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helper = new CustomKeyboardHelper(this);
+        helper = new CustomKeyboardHelper(this, R.xml.keyboardnumber);
 
         EditText editText1 = (EditText) findViewById(R.id.editText1);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
         EditText editText3 = (EditText) findViewById(R.id.editText3);
 
+        // 固定数字键盘
         helper.registerEditText(editText1);
+        // 随机数字键盘
         helper.registerEditText(editText3, true);
     }
 
