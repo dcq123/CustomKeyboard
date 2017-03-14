@@ -8,6 +8,23 @@
 
 ### 使用方法
 
+添加依赖：
+在根目录的build.gradle中添加
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+然后在model的build.gradle中添加依赖：
+```
+compile 'com.github.dcq123:CustomKeyboard:v1.0.1'
+
+```
+
+
 使用也很简便，只需创建一个`CustomKeyboardHelper` 实例，然后将需要使用自定义键盘的`EditText`注册给该`help`实例即可：
 
 ```java
