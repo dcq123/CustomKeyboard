@@ -1,0 +1,74 @@
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = PROJ_GROUP
+version = PROJ_VERSION
+project.archivesBaseName = PROJ_ARTIFACTID
+
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name PROJ_DESCRIPTION     //项目的描述 你可以多写一点
+                url PROJ_WEBSITEURL
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'dcq'        //填写的一些基本信息
+                        name 'qing'
+                        email 'qing_soft@sina.cn'
+                    }
+                }
+                scm {
+                    connection PROJ_VCSURL
+                    developerConnection PROJ_VCSURL
+                    url PROJ_WEBSITEURL
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+//读取properties的配置信息，当然直接把信息写到代码里也是可以的
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        userOrg = "ding"
+        repo = "maven"          //这个应该是传到maven的仓库的
+        name = PROJ_NAME    //发布的项目名字
+        websiteUrl = PROJ_WEBSITEURL
+        vcsUrl = PROJ_VCSURL
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
