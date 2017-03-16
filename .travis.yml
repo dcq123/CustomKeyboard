@@ -1,5 +1,5 @@
 language: android
-jdk: oraclejdk8
+
 sudo: false
 
 android:
@@ -10,7 +10,7 @@ android:
   - android-25
   - extra-android-m2repository
 script:
-  - "./gradlew assembleRelease"
+  - ./gradlew assembleRelease
 
 deploy:
   provider: releases
