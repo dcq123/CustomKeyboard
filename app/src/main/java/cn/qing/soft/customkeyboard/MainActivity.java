@@ -1,8 +1,9 @@
 package cn.qing.soft.customkeyboard;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import cn.qing.soft.keyboardlib.CustomKeyboardHelper;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         helper.registerEditText(editText1);
         // 随机数字键盘
         helper.registerEditText(editText3, true);
+
+        Toast.makeText(this, "数字键盘", Toast.LENGTH_SHORT).show();
     }
 
     @Override
