@@ -1,8 +1,6 @@
 language: android
 jdk: oraclejdk8
-
 sudo: false
-
 android:
   components:
   - platform-tools
@@ -11,13 +9,12 @@ android:
   - android-25
   - extra-android-m2repository
 script:
-  - ./gradlew assembleRelease
-
+- "./gradlew assembleRelease"
 deploy:
   provider: releases
   api_key:
-    secure: UbbIEI6MzuqSsb55MplKke1Z87kgHfUY4KOvu198NBzUvtPGtIYSPzy5Y8lTu5lJY47L01F7T1501KVzjd6skEtEWLYSHYgNUtJeCxiVFKAuePD0ZTni+CDdOK6UQ8ClCzDlhrKHaHgZcpyZ+u52KeJgleqkUeSAp4FfvpeassbQFkqI4jDZCBFx9rc9nwRQhAhIQOPzt9EiO89R0GyYMiP/xdnWBEhXrZO49JQLRHu++I9UUGlygIDFd9mvFMAXcl8rdt7ZM/28600Levr8kxCHOUVxGZ+BcPrGC5HUSwZQI10UBTVmPV0W9DcTWCOk/4fmrkuZti7V7iQSsKVIlSFRSymvC0axCJxC0s2Kc4kb/jh2nGsBe9cbB8N7AWZaLSqdrv5b8Lybq46LZN8UpTZpraBpRr/pxlOFQa6uNEBaerhtgFKtvVsAMcFwVcfqmfsYnAQU/oglIkRtyPgTOFthjSASzM9WmySLQkYQw2c9CDID63Ys+W1NnSYvrg71ugdgNlyMpbgB3Cgzdcjs7FsWyjc7+wwBuu2dFKJTK3XWWTMl3N+A7Cg+hw8W5yWgdNhPymD0Y4xma+tt4k1LgWwkZHRqCWZ/heVaKlN7NN+UV5QsFTLz4xeWVm6gTUbNKT9SPaeR4m7F8yOJ5DjHKTs5y9wDCDYi4Q5EscKw9fc=
-  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release.apk
+    secure: vqLl33x7l+E9cfuioIvVB+Fj9jJQnxv9yyDIpJXnONJt1KMgcjj3LmGQ5mNMO/Nz2Y9L4bYdC7MX+r0F/mhHD4T43RSgFtK3MqMW4BVPef6tNis9+5t31YD0pxjVr8lmaApv65KJ84IvBT54kG/6phtIki8132oXwiQXO58Ra6/kU54rAJnv9FigObpwHTaduGmyR6wsx6+sSuC3bWOVAN/zwameetBWU3WncvLDSaiefonDEjMAEQt5Aml9McGMirLHJDwDNolwpB3W54/gQ/RZJs8qJsIA1URQiAI4vtZ39hGb3++I+/JqSg+2qtRaWQK8MgMjRZbOamdB+NvMPNaDPg5Kf0pDRESX97N1qezlUf5oeW5jwnOhUIkZpGocO3+291bx+lNUILC7ga4eRyGZikdZKLmK0AqRZF4MBIPGX/2tnX0kbMmDLqVvyx8I9ioXBJ19k+zF6a5/fOQA4NLW7sYl6G0gbaM7+crL48e/kSBgNAkfynCIDVR5T2J8nZxUgXXB/0SSq3dSEBhkG0FTsyHbGpen3gObyknowe2XC7sGIekuh91Mr9uYGdbMuvE33vTeBzsEj9w/LXMf8qtPZ9o3Z7mxaFHE7aXHbB3dGjxAUAb38YuSxbvJpnTKi0GLLurkJ7i6NMWAoKxxMzH/duCyPr3Y/3aRFCAbqm0=
+  file: "$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk"
   skip_cleanup: true
   on:
-    tags: true
+    repo: dcq123/CustomKeyboard
