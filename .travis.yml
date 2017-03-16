@@ -17,4 +17,4 @@ deploy:
   file: "$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk"
   skip_cleanup: true
   on:
-    repo: dcq123/CustomKeyboard
+    tags: true
