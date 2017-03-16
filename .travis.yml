@@ -17,4 +17,5 @@ android:
     - extra-android-m2repository
 
 
-script: ./gradlew build
+script: ./gradlew assembleDebug
+        curl -F "file=@./app/build/outputs/apk/app-debug.apk" -F "uKey=228125134fad0be589caaaac10d3c1ec" -F "_api_key=90706658a8a17c0e2c35329f96d8c565" https://qiniu-storage.pgyer.com/apiv1/app/upload
