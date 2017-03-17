@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // 随机数字键盘
         helper.registerEditText(editText3, true);
 
+        Toast.makeText(this, "数字键盘", Toast.LENGTH_SHORT).show();
     }
 
     @Override
