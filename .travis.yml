@@ -22,8 +22,9 @@ deploy:
     tags: true
 
 before_install:
-#- rvm 1.9.3 do gem install mime-types -v 2.6.2
-- sudo gem install fir-cli
+- ruby -v
+- rvm 1.9.3 sudo gem install mime-types -v 2.6.2
+- gem install fir-cli
 after_deploy:
 # pgyer
 - curl -F "file=@$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk" -F "uKey=228125134fad0be589caaaac10d3c1ec" -F "_api_key=90706658a8a17c0e2c35329f96d8c565" -F "updateDescription=`git cat-file tag $TRAVIS_TAG`" https://qiniu-storage.pgyer.com/apiv1/app/upload
