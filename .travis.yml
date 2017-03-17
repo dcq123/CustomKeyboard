@@ -21,10 +21,12 @@ deploy:
   on:
     tags: true
 
-after_deploy:
- curl -F "file=@$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk" -F "uKey=228125134fad0be589caaaac10d3c1ec" -F "_api_key=90706658a8a17c0e2c35329f96d8c565" -F "updateDescription=`git cat-file tag $TRAVIS_TAG`" https://qiniu-storage.pgyer.com/apiv1/app/upload
-
 before_install:
+- gem install mime-types --version "< 3"
+- gem install --conservative mailcatcher
 - gem install fir-cli
 after_deploy:
+# pgyer
+- curl -F "file=@$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk" -F "uKey=228125134fad0be589caaaac10d3c1ec" -F "_api_key=90706658a8a17c0e2c35329f96d8c565" -F "updateDescription=`git cat-file tag $TRAVIS_TAG`" https://qiniu-storage.pgyer.com/apiv1/app/upload
+# fir.im
 - fir p $TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release.apk -T f9157c0a74340733f460fbe040f10929 -c "`git cat-file tag $TRAVIS_TAG`"
