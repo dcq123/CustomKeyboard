@@ -12,11 +12,11 @@
 在根目录的build.gradle中添加
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 然后在model的build.gradle中添加依赖：
 ```
