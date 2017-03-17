@@ -23,7 +23,7 @@ deploy:
 
 before_install:
 - ruby -v
-- rvm 1.9.3 sudo gem install mime-types -v 2.6.2
+#- sudo rvm 1.9.3 do gem install mime-types -v 2.6.2
 - gem install fir-cli
 after_deploy:
 # pgyer
