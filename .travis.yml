@@ -25,6 +25,6 @@ before_install:
 - gem install fir-cli
 after_deploy:
 # pgyer
-- curl -F "file=@$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk" -F uKey=System.getenv("pgyer_u_key") -F _api_key=System.getenv("pgyer_api_key") -F "updateDescription=`git cat-file tag $TRAVIS_TAG`" https://qiniu-storage.pgyer.com/apiv1/app/upload
+- curl -F "file=@$TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk" -F uKey=System.getenv('pgyer_u_key') -F _api_key=System.getenv('pgyer_api_key') -F "updateDescription=`git cat-file tag $TRAVIS_TAG`" https://qiniu-storage.pgyer.com/apiv1/app/upload
 # fir.im
-- fir p $TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk -T System.getenv("fir_token") -c "`git cat-file tag $TRAVIS_TAG`"
+- fir p $TRAVIS_BUILD_DIR/app/build/outputs/apk/app-release-unsigned.apk -T System.getenv('fir_token') -c "`git cat-file tag $TRAVIS_TAG`"
